@@ -59,4 +59,134 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 4
+# Topic: Multi-dimensional Arrays (2D Lists), Nested Loops, and Functions
+# =============================================================================
+
+# -------------------------------
+# Utility: Display matrix neatly
+# -------------------------------
+def display_matrix(matrix):
+    for row in matrix:
+        for val in row:
+            print(f"{val:5}", end="")  # aligned spacing
+        print()
+    print()
+
+# -------------------------------
+# Part A: Transpose a Matrix
+# -------------------------------
+def transpose_matrix(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    transpose = []
+    for c in range(cols):
+        new_row = []
+        for r in range(rows):
+            new_row.append(matrix[r][c])
+        transpose.append(new_row)
+    return transpose
+
+# -------------------------------
+# Part B: Add Two Matrices
+# -------------------------------
+def add_matrices(matrix1, matrix2):
+    rows = len(matrix1)
+    cols = len(matrix1[0])
+    result = []
+    for r in range(rows):
+        new_row = []
+        for c in range(cols):
+            new_row.append(matrix1[r][c] + matrix2[r][c])
+        result.append(new_row)
+    return result
+
+# -------------------------------
+# Part C: Multiply Two Matrices
+# -------------------------------
+def multiply_matrices(matrixA, matrixB):
+    rowsA = len(matrixA)
+    colsA = len(matrixA[0])
+    rowsB = len(matrixB)
+    colsB = len(matrixB[0])
+
+    if colsA != rowsB:
+        print("Error: Cannot multiply, incompatible dimensions.")
+        return None
+
+    result = []
+    for i in range(rowsA):
+        new_row = []
+        for j in range(colsB):
+            total = 0
+            for k in range(colsA):
+                total += matrixA[i][k] * matrixB[k][j]
+            new_row.append(total)
+        result.append(new_row)
+    return result
+
+# -------------------------------
+# Helper: Read matrix from user
+# -------------------------------
+def read_matrix(rows, cols):
+    matrix = []
+    for r in range(rows):
+        row_values = input(f"Enter row {r+1}: ").split()
+        row = [int(val) for val in row_values]
+        if len(row) != cols:
+            print("Error: Row length mismatch.")
+            return None
+        matrix.append(row)
+    return matrix
+
+# -------------------------------
+# Main Program
+# -------------------------------
+def main():
+    # Part A: Transpose
+    print("=== Part A: Transpose ===")
+    m = int(input("Enter number of rows: "))
+    n = int(input("Enter number of columns: "))
+    matrix = read_matrix(m, n)
+    print("\nOriginal Matrix:")
+    display_matrix(matrix)
+    transposed = transpose_matrix(matrix)
+    print("Transposed Matrix:")
+    display_matrix(transposed)
+
+    # Part B: Addition
+    print("=== Part B: Add Two Matrices ===")
+    m = int(input("Enter number of rows: "))
+    n = int(input("Enter number of columns: "))
+    print("Matrix 1:")
+    matrix1 = read_matrix(m, n)
+    print("Matrix 2:")
+    matrix2 = read_matrix(m, n)
+    print("\nSum of Matrices:")
+    display_matrix(add_matrices(matrix1, matrix2))
+
+    # Part C: Multiplication
+    print("=== Part C: Multiply Two Matrices ===")
+    m = int(input("Enter rows for Matrix A: "))
+    n = int(input("Enter columns for Matrix A: "))
+    matrixA = read_matrix(m, n)
+
+    p = int(input("Enter columns for Matrix B: "))
+    print("Matrix B:")
+    matrixB = read_matrix(n, p)
+
+    print("\nMatrix A:")
+    display_matrix(matrixA)
+    print("Matrix B:")
+    display_matrix(matrixB)
+
+    product = multiply_matrices(matrixA, matrixB)
+    if product:
+        print("Product Matrix:")
+        display_matrix(product)
+
+# Run program
+if __name__ == "__main__":
+    main()
 
