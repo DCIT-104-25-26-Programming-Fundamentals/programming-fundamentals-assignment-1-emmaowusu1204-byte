@@ -48,4 +48,57 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 5
+# Topic: Loops, Sequences, and Functions
+# =============================================================================
+
+# -------------------------------
+# Part A: Print the First N Terms
+# -------------------------------
+def print_fibonacci_terms(n):
+    if n <= 0:
+        print("Error: Number of terms must be positive.")
+        return
+
+    sequence = []
+    a, b = 0, 1
+    for i in range(n):
+        sequence.append(a)
+        a, b = b, a + b
+
+    print("Fibonacci sequence:", " ".join(str(num) for num in sequence))
+
+# -------------------------------
+# Part B: Check if a Number Belongs
+# -------------------------------
+def check_fibonacci_number(x):
+    if x < 0:
+        print(f"{x} is NOT a Fibonacci number.")
+        return
+
+    a, b = 0, 1
+    while a <= x:
+        if a == x:
+            print(f"{x} is a Fibonacci number.")
+            return
+        a, b = b, a + b
+
+    print(f"{x} is NOT a Fibonacci number.")
+
+# -------------------------------
+# Main Program
+# -------------------------------
+def main():
+    # Part A
+    n = int(input("How many terms? "))
+    print_fibonacci_terms(n)
+
+    # Part B
+    x = int(input("\nEnter a number to check: "))
+    check_fibonacci_number(x)
+
+# Run program
+if __name__ == "__main__":
+    main()
 
