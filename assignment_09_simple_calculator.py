@@ -67,4 +67,96 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 9
+# Simple Console-Based Calculator
+# =============================================================================
+
+# -------------------------------
+# Arithmetic Operation Functions
+# -------------------------------
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        return None  # Handle division by zero
+    return round(a / b, 2)
+
+def modulus(a, b):
+    if b == 0:
+        return None  # Handle modulus by zero
+    return a % b
+
+def exponentiate(a, b):
+    return a ** b
+
+# -------------------------------
+# Main Calculator Program
+# -------------------------------
+
+def main():
+    while True:
+        print("\n============================")
+        print("     SIMPLE CALCULATOR")
+        print("============================")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Modulus")
+        print("6. Exponentiation")
+        print("7. Quit")
+        
+        choice = input("Select an operation (1-7): ")
+        
+        if choice == "7":
+            print("Goodbye!")
+            break
+        
+        if choice not in ["1", "2", "3", "4", "5", "6"]:
+            print("Invalid choice. Please select a number between 1 and 7.")
+            continue
+        
+        try:
+            a = float(input("Enter first number : "))
+            b = float(input("Enter second number: "))
+        except ValueError:
+            print("Error: Please enter valid numbers.")
+            continue
+        
+        if choice == "1":
+            result = add(a, b)
+            print(f"Result: {a} + {b} = {result}")
+        elif choice == "2":
+            result = subtract(a, b)
+            print(f"Result: {a} - {b} = {result}")
+        elif choice == "3":
+            result = multiply(a, b)
+            print(f"Result: {a} * {b} = {result}")
+        elif choice == "4":
+            result = divide(a, b)
+            if result is None:
+                print("Error: Cannot divide by zero.")
+            else:
+                print(f"Result: {a} / {b} = {result}")
+        elif choice == "5":
+            result = modulus(a, b)
+            if result is None:
+                print("Error: Cannot perform modulus with zero.")
+            else:
+                print(f"Result: {a} % {b} = {result}")
+        elif choice == "6":
+            result = exponentiate(a, b)
+            print(f"Result: {a} ** {b} = {result}")
+
+# Run the calculator
+main()
 
